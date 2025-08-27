@@ -61,26 +61,20 @@ dependencies {
     implementation(libs.androidx.material3)
 
     // Supabase (con BOM)
-    //implementation(platform(libs.supabase.bom))
-    //implementation(libs.supabase.gotrue)
-    //implementation(libs.supabase.postgrest)
-    //implementation(libs.supabase.realtime)
-    //implementation(libs.supabase.storage)
-    implementation(platform("io.github.jan-tennert.supabase:bom:3.2.2"))
-    implementation("io.github.jan-tennert.supabase:postgrest-kt")
-    implementation("io.github.jan-tennert.supabase:auth-kt")
-    implementation("io.github.jan-tennert.supabase:realtime-kt")
-    implementation("io.ktor:ktor-client-android:3.2.3")
+    implementation(platform(libs.supabase.bom))
+    implementation(libs.supabase.auth)
+    implementation(libs.supabase.postgrest)
+    implementation(libs.supabase.realtime)
+    implementation(libs.supabase.storage)
 
-    //NEWS
-    //implementation(platform(libs.supabase.bom))
-    //implementation(libs.supabase.postgrest)
-    //implementation(libs.supabase.realtime)
-    //implementation(libs.supabase.storage)
-    //implementation(libs.supabase.auth)
+    // Ktor Client
+    implementation(libs.ktor.client.android)
 
-    // Kotlin coroutines (para supabase)
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
+    // ViewModel Compose
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+
+    // Kotlin coroutines
+    implementation(libs.kotlinx.coroutines.android)
 
     // Material UI
     implementation(libs.material.ui)
