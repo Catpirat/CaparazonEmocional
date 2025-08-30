@@ -12,18 +12,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.caparazonemocional.ui.theme.CaparazonEmocionalTheme
-import io.github.jan.supabase.auth.Auth
-import io.github.jan.supabase.createSupabaseClient
-import io.github.jan.supabase.postgrest.Postgrest
-
-val supabase = createSupabaseClient(
-    supabaseUrl = "https://alfasuphpjpzzygcmznt.supabase.co",
-    supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFsZmFzdXBocGpwenp5Z2Ntem50Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA0NTkzNDQsImV4cCI6MjA2NjAzNTM0NH0.7cyiEkRHZthFOQ_ut7a_V8RrhPVHp_MRs8lr1eNLY10"
-) {
-    install(Auth)
-    install(Postgrest)
-    //install other modules
-}
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +28,6 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-
 }
 
 @Composable
