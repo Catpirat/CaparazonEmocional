@@ -1,57 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.caparazonemocional.auth.RegisterActivity">
+    android:orientation="vertical"
+    android:background="#FDDDE6">
 
-    <!-- Título -->
-    <TextView
-        android:id="@+id/tvRegisterTitle"
-        android:layout_width="wrap_content"
+    <!-- Encabezado morado -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="#7A4E9C"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CREAR CUENTA"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"/>
+    </LinearLayout>
+
+    <!-- Formulario -->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Crear cuenta"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="40dp"/>
+        android:layout_margin="20dp"
+        android:orientation="vertical"
+        android:background="@android:color/white"
+        android:padding="20dp"
+        android:elevation="4dp"
+        android:backgroundTint="#FDEFF5"
+        android:clipToOutline="true">
 
-    <!-- Email -->
-    <EditText
-        android:id="@+id/etEmail"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Correo electrónico"
-        android:inputType="textEmailAddress"
-        app:layout_constraintTop_toBottomOf="@id/tvRegisterTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="20dp"/>
+        <!-- Nombre -->
+        <EditText
+            android:id="@+id/etName"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Nombre"
+            android:drawableStart="@drawable/ic_user"
+            android:drawablePadding="12dp"
+            android:background="@drawable/edittext_bg"
+            android:paddingStart="12dp"
+            android:inputType="textPersonName"
+            android:textColorHint="#999"/>
 
-    <!-- Contraseña -->
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Contraseña"
-        android:inputType="textPassword"
-        app:layout_constraintTop_toBottomOf="@id/etEmail"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="20dp"/>
+        <!-- Correo -->
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Correo electrónico"
+            android:drawableStart="@drawable/ic_email"
+            android:drawablePadding="12dp"
+            android:background="@drawable/edittext_bg"
+            android:paddingStart="12dp"
+            android:inputType="textEmailAddress"
+            android:layout_marginTop="12dp"
+            android:textColorHint="#999"/>
 
-    <!-- Botón de Registro -->
-    <Button
-        android:id="@+id/btnRegister"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Registrarse"
-        app:layout_constraintTop_toBottomOf="@id/etPassword"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="20dp"/>
+        <!-- Contraseña -->
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Contraseña"
+            android:drawableStart="@drawable/ic_block"
+            android:drawablePadding="12dp"
+            android:background="@drawable/edittext_bg"
+            android:paddingStart="12dp"
+            android:inputType="textPassword"
+            android:layout_marginTop="12dp"
+            android:textColorHint="#999"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- Botón -->
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="Crear cuenta"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:backgroundTint="#FF3F9E"
+            android:layout_marginTop="18dp"/>
+    </LinearLayout>
+
+    <!-- Imagen inferior -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_tortugas"/>
+</LinearLayout>

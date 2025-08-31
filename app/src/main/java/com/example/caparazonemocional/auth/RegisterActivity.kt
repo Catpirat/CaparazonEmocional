@@ -13,21 +13,27 @@ import kotlinx.coroutines.launch
 import com.example.caparazonemocional.SupabaseInstance
 import io.github.jan.supabase.auth.auth
 
+import kotlinx.serialization.json.buildJsonObject
+import kotlinx.serialization.json.put
+
+
 class RegisterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
+        val nameInput = findViewById<EditText>(R.id.etName)
         val emailInput = findViewById<EditText>(R.id.etEmail)
         val passwordInput = findViewById<EditText>(R.id.etPassword)
         val registerBtn = findViewById<Button>(R.id.btnRegister)
 
         registerBtn.setOnClickListener {
+            val nameValue = nameInput.text.toString().trim()
             val emailValue = emailInput.text.toString().trim()
             val passwordValue = passwordInput.text.toString().trim()
 
-            if (emailValue.isEmpty() || passwordValue.isEmpty()) {
+            if (nameValue.isEmpty() || emailValue.isEmpty() || passwordValue.isEmpty()) {
                 Toast.makeText(this, "Completa todos los campos", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
@@ -38,6 +44,9 @@ class RegisterActivity : AppCompatActivity() {
                     SupabaseInstance.client.auth.signUpWith(Email) {
                         email = emailValue
                         password = passwordValue
+                        data = buildJsonObject {
+                            put("full_name", nameValue)
+                        }
                     }
 
                     Toast.makeText(
@@ -47,8 +56,8 @@ class RegisterActivity : AppCompatActivity() {
                     ).show()
                     finish() // Regresa al LoginActivity
                 } catch (e: Exception) {
-                    e.printStackTrace() // 👈 Esto muestra el error completo en Logcat
-                    android.util.Log.e("RegisterActivity", "Error al registrar", e) // 👈 log con etiqueta
+                    e.printStackTrace()
+                    android.util.Log.e("RegisterActivity", "Error al registrar", e)
 
                     Toast.makeText(
                         this@RegisterActivity,
@@ -60,4 +69,3 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 }
-
