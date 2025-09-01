@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">CaparazonEmocional</string>
+    <string name="caparazon_nemocional">Caparazon\nEmocional</string>
+    <string name="create_account_text">
+    ¿No tienes una cuenta? <font color="#1976D2">Crear cuenta</font>
+    </string>
 </resources>
+

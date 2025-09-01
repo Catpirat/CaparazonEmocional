@@ -1,68 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.caparazonemocional.auth.LoginActivity">
+    android:background="#F8BBD0"
+    tools:context=".auth.LoginActivity">
 
     <!-- Título -->
     <TextView
-        android:id="@+id/tvLoginTitle"
+        android:id="@+id/appTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Iniciar sesión"
-        android:textSize="24sp"
+        android:text="@string/caparazon_nemocional"
+        android:textColor="@android:color/black"
+        android:textSize="28sp"
+        android:gravity="center"
+        android:fontFamily="sans-serif"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="40dp"/>
 
-    <!-- Email -->
-    <EditText
-        android:id="@+id/etEmailLogin"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Correo electrónico"
-        android:inputType="textEmailAddress"
-        app:layout_constraintTop_toBottomOf="@id/tvLoginTitle"
+    <!-- Imagen del caparazón -->
+    <ImageView
+        android:id="@+id/logoShell"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/ic_shell"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintTop_toBottomOf="@id/appTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="20dp"/>
+        android:layout_marginTop="20dp"/>
 
-    <!-- Contraseña -->
-    <EditText
-        android:id="@+id/etPasswordLogin"
+    <!-- Tarjeta blanca -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/loginCard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Contraseña"
-        android:inputType="textPassword"
-        app:layout_constraintTop_toBottomOf="@id/etEmailLogin"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="32dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="8dp"
+        app:layout_constraintTop_toBottomOf="@id/logoShell"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="20dp"/>
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <!-- Botón de Login -->
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Iniciar sesión"
-        app:layout_constraintTop_toBottomOf="@id/etPasswordLogin"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="20dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
 
-    <!-- Botón a registro -->
-    <Button
-        android:id="@+id/btnGoRegister"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Crear cuenta"
-        app:layout_constraintTop_toBottomOf="@id/btnLogin"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="20dp"/>
+            <!-- Email -->
+            <EditText
+                android:id="@+id/etEmailLogin"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/edittext_bg"
+                android:hint="Correo electrónico"
+                android:drawableStart="@drawable/ic_email"
+                android:drawablePadding="10dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:inputType="textEmailAddress"
+                android:layout_marginBottom="12dp"/>
+
+            <!-- Password -->
+            <EditText
+                android:id="@+id/etPasswordLogin"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/edittext_bg"
+                android:hint="Contraseña"
+                android:drawableStart="@drawable/ic_block"
+                android:drawablePadding="10dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:inputType="textPassword"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- Opciones -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <CheckBox
+                android:id="@+id/cbRememberMe"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Recuerdame"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/tvForgotPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¿Olvidaste tu contraseña?"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+            <!-- Botón login -->
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Ingresar"
+                android:textAllCaps="false"
+                android:backgroundTint="#FF4081"
+                android:textColor="@android:color/white"
+                android:layout_marginBottom="12dp"/>
+
+            <!-- Registro -->
+            <TextView
+                android:id="@+id/tvCreateAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:layout_gravity="center"
+                android:textColor="@android:color/black"
+                android:text="@string/create_account_text"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
