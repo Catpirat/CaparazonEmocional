@@ -1,6 +1,11 @@
 package com.example.caparazonemocional.auth
 
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.method.LinkMovementMethod
+import android.text.style.ClickableSpan
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -15,7 +20,7 @@ import io.github.jan.supabase.auth.auth
 
 import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.put
-
+import android.widget.*
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -27,6 +32,24 @@ class RegisterActivity : AppCompatActivity() {
         val emailInput = findViewById<EditText>(R.id.etEmail)
         val passwordInput = findViewById<EditText>(R.id.etPassword)
         val registerBtn = findViewById<Button>(R.id.btnRegister)
+        val backToLogin = findViewById<TextView>(R.id.tvBackToLogin)
+
+        // ----- Texto con parte clickeable -----
+        val text = "Regresar a Inicio de sesión"
+        val spannable = SpannableString(text)
+
+        val clickableSpan = object : ClickableSpan() {
+            override fun onClick(widget: View) {
+                finish() // volver al LoginActivity
+            }
+        }
+
+        // "Inicio de sesión" será clickeable
+        spannable.setSpan(clickableSpan, 11, text.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        backToLogin.text = spannable
+        backToLogin.movementMethod = LinkMovementMethod.getInstance()
+
 
         registerBtn.setOnClickListener {
             val nameValue = nameInput.text.toString().trim()

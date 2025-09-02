@@ -19,10 +19,28 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        // Revisar si recordar sesión
+        val prefs = getSharedPreferences("user_prefs", MODE_PRIVATE)
+        val remember = prefs.getBoolean("remember_me", false)
+
+        CoroutineScope(Dispatchers.Main).launch {
+            val session = SupabaseInstance.client.auth.currentSessionOrNull()
+            if (remember && session != null) {
+                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                finish()
+            }
+        }
+
         val emailInput = findViewById<EditText>(R.id.etEmailLogin)
         val passwordInput = findViewById<EditText>(R.id.etPasswordLogin)
         val loginBtn = findViewById<Button>(R.id.btnLogin)
         val createAccount = findViewById<TextView>(R.id.tvCreateAccount)
+        val rememberMe = findViewById<CheckBox>(R.id.cbRememberMe)
+        val forgotPassword = findViewById<TextView>(R.id.tvForgotPassword)
+
+        forgotPassword.setOnClickListener {
+            startActivity(Intent(this, ForgotPasswordActivity::class.java))
+        }
 
         loginBtn.setOnClickListener {
             val email = emailInput.text.toString().trim()
@@ -39,8 +57,13 @@ class LoginActivity : AppCompatActivity() {
                         this.email = email
                         this.password = password
                     }
-                    Toast.makeText(this@LoginActivity, "Inicio de sesión exitoso", Toast.LENGTH_LONG).show()
 
+                    // Guardar preferencia
+                    prefs.edit()
+                        .putBoolean("remember_me", rememberMe.isChecked)
+                        .apply()
+
+                    Toast.makeText(this@LoginActivity, "Inicio de sesión exitoso", Toast.LENGTH_LONG).show()
                     startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                     finish()
 

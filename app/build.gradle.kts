@@ -91,6 +91,9 @@ dependencies {
 
     // Material UI
     implementation(libs.material.ui)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.activity)
+    implementation(libs.androidx.constraintlayout)
 
     // Tests
     testImplementation(libs.junit)
