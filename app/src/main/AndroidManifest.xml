@@ -15,9 +15,29 @@
         android:theme="@style/Theme.CaparazonEmocional"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
+        <!-- ResetPasswordActivity: recibe tanto deep link custom como el de Supabase -->
+        <activity android:name=".auth.ResetPasswordActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <!-- Este es tu esquema deep link -->
+                <data
+                    android:scheme="caparazonemocional"
+                    android:host="reset-password" />
+            </intent-filter>
+        </activity>
+
+        <!-- ForgotPasswordActivity: solo para enviar email -->
         <activity
             android:name=".auth.ForgotPasswordActivity"
             android:exported="false" />
+
+        <!-- Login como launcher -->
         <activity
             android:name=".auth.LoginActivity"
             android:exported="true"
@@ -25,12 +45,13 @@
             android:theme="@style/Theme.CaparazonEmocional">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Otras actividades -->
         <activity android:name=".auth.RegisterActivity" />
         <activity android:name=".MainActivity" />
-    </application>
 
+    </application>
 </manifest>
