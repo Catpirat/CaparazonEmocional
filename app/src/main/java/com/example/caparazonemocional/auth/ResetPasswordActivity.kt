@@ -3,6 +3,7 @@ package com.example.caparazonemocional.auth
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -63,12 +64,23 @@ class ResetPasswordActivity : AppCompatActivity() {
                 val endpoint = "$supaUrl/auth/v1/user"
                 val bodyJson = """{"password":"$newPassword"}"""
 
-                val response: HttpResponse = client.patch(endpoint) {
+                Log.d("ResetPassword", "=== HTTP REQUEST DEBUG ===")
+                Log.d("ResetPassword", "URL: $endpoint")
+                Log.d("ResetPassword", "Access Token: ${accessToken?.take(50)}...")
+                Log.d("ResetPassword", "Body: $bodyJson")
+
+                // CAMBIO: usar PUT en lugar de PATCH
+                val response: HttpResponse = client.put(endpoint) {
                     header("apikey", BuildConfig.SUPABASE_ANON_KEY)
                     header("Authorization", "Bearer $accessToken")
                     contentType(ContentType.Application.Json)
                     setBody(bodyJson)
                 }
+
+                Log.d("ResetPassword", "Response Status: ${response.status}")
+
+                val responseBody = response.bodyAsText()
+                Log.d("ResetPassword", "Response Body: $responseBody")
 
                 if (response.status.isSuccess()) {
                     CoroutineScope(Dispatchers.Main).launch {
@@ -81,16 +93,16 @@ class ResetPasswordActivity : AppCompatActivity() {
                         finish()
                     }
                 } else {
-                    val txt = response.bodyAsText()
                     CoroutineScope(Dispatchers.Main).launch {
                         Toast.makeText(
                             this@ResetPasswordActivity,
-                            "Error actualizando: $txt",
+                            "Error ${response.status.value}: $responseBody",
                             Toast.LENGTH_LONG
                         ).show()
                     }
                 }
             } catch (e: Exception) {
+                Log.e("ResetPassword", "Exception: ${e.message}", e)
                 CoroutineScope(Dispatchers.Main).launch {
                     Toast.makeText(
                         this@ResetPasswordActivity,

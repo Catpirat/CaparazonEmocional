@@ -18,17 +18,13 @@
 
         <!-- ResetPasswordActivity: recibe tanto deep link custom como el de Supabase -->
         <activity android:name=".auth.ResetPasswordActivity"
-            android:exported="true">
+            android:exported="true"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-
-                <!-- Este es tu esquema deep link -->
-                <data
-                    android:scheme="caparazonemocional"
-                    android:host="reset-password" />
+                <data android:scheme="caparazonemocional" />
             </intent-filter>
         </activity>
 
