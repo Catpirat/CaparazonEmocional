@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@drawable/dialog_background">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Configuración"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:id="@+id/tvHorarioInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lunes 08:00 - 09:00"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnToggleEstado"
+            android:layout_width="200dp"
+            android:layout_height="48dp"
+            android:text="Deshabilitar"
+            android:textColor="@android:color/black"
+            android:background="@drawable/button_deshabilitar"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/btnToggleTipo"
+            android:layout_width="200dp"
+            android:layout_height="48dp"
+            android:text="Virtual"
+            android:textColor="@android:color/black"
+            android:background="@drawable/button_virtual"
+            android:layout_marginBottom="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnCancelar"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="Cancelar"
+                android:textColor="@android:color/black"
+                android:background="@drawable/button_secondary"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/btnGuardar"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="Guardar"
+                android:textColor="@android:color/white"
+                android:background="@drawable/button_primary"
+                android:layout_marginStart="8dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
+
+    <!-- res/drawable/dialog_background.xml -->
+
+    <!-- res/drawable/button_deshabilitar.xml -->
+
+    <!-- res/drawable/button_virtual.xml -->
+
+    <!-- res/drawable/button_primary.xml -->
+
+    <!-- res/drawable/button_secondary.xml -->

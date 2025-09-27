@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.example.caparazonemocional.MainActivity
+import com.example.caparazonemocional.AgendaActivity
 import com.example.caparazonemocional.R
 import com.example.caparazonemocional.SupabaseInstance
 import io.github.jan.supabase.auth.auth
@@ -26,7 +26,9 @@ class LoginActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.Main).launch {
             val session = SupabaseInstance.client.auth.currentSessionOrNull()
             if (remember && session != null) {
-                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                //startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                //finish()
+                startActivity(Intent(this@LoginActivity, AgendaActivity::class.java))
                 finish()
             }
         }
@@ -64,7 +66,7 @@ class LoginActivity : AppCompatActivity() {
                         .apply()
 
                     Toast.makeText(this@LoginActivity, "Inicio de sesión exitoso", Toast.LENGTH_LONG).show()
-                    startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                    startActivity(Intent(this@LoginActivity, AgendaActivity::class.java))
                     finish()
 
                 } catch (e: Exception) {

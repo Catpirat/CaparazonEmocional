@@ -105,4 +105,7 @@ dependencies {
     // Debug
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    //Serialización
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
 }

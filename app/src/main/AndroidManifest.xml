@@ -16,8 +16,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
 
-        <!-- ResetPasswordActivity: recibe tanto deep link custom como el de Supabase -->
-        <activity android:name=".auth.ResetPasswordActivity"
+        <!-- PRINCIPAL: AgendaActivity en paquete principal -->
+        <activity android:name=".AgendaActivity" android:exported="false" />
+
+        <!-- ResetPasswordActivity -->
+        <activity
+            android:name=".auth.ResetPasswordActivity"
             android:exported="true"
             android:launchMode="singleTop">
             <intent-filter>
@@ -28,12 +32,12 @@
             </intent-filter>
         </activity>
 
-        <!-- ForgotPasswordActivity: solo para enviar email -->
+        <!-- ForgotPasswordActivity -->
         <activity
             android:name=".auth.ForgotPasswordActivity"
             android:exported="false" />
 
-        <!-- Login como launcher -->
+        <!-- LoginActivity -->
         <activity
             android:name=".auth.LoginActivity"
             android:exported="true"

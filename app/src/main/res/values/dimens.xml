@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="time_slot_height">70dp</dimen>
+    <dimen name="time_column_width">60dp</dimen>
+    <dimen name="indicator_size">16dp</dimen>
+</resources>

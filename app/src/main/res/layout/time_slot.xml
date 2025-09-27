@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:layout_margin="1dp"
+    android:background="@drawable/time_slot_background"
+    android:clickable="true"
+    android:focusable="true">
+
+    <!-- Indicador de ocupación (círculo pequeño) -->
+    <View
+        android:id="@+id/occupancyIndicator"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:layout_gravity="top|end"
+        android:layout_margin="4dp"
+        android:background="@drawable/circle_indicator"
+        android:visibility="gone" />
+
+</FrameLayout>
