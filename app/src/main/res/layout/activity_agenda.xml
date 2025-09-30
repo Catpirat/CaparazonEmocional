@@ -33,7 +33,6 @@
             android:textStyle="bold"
             android:gravity="center" />
 
-        <!-- Botón de configuración -->
         <ImageView
             android:id="@+id/btnConfig"
             android:layout_width="24dp"
@@ -52,103 +51,113 @@
         android:src="@drawable/ic_expand_more"
         android:layout_marginTop="8dp" />
 
-    <!-- Header de días -->
-    <LinearLayout
+    <!-- Header de días con scroll horizontal -->
+    <HorizontalScrollView
+        android:id="@+id/headerScrollView"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="8dp">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:scrollbars="none">
 
-        <!-- Columna de horas (vacía en header) -->
-        <View
-            android:layout_width="60dp"
-            android:layout_height="match_parent" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
 
-        <!-- Días de la semana -->
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Lunes"
-            android:textColor="@android:color/black"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:background="#E91E63" />
+            <!-- Columna de horas (vacía en header) -->
+            <View
+                android:layout_width="50dp"
+                android:layout_height="match_parent" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Martes"
-            android:textColor="@android:color/black"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:background="#E91E63"
-            android:layout_marginStart="2dp" />
+            <!-- Días de la semana -->
+            <TextView
+                android:layout_width="55dp"
+                android:layout_height="match_parent"
+                android:text="Lun"
+                android:textColor="@android:color/black"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:background="#E91E63" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Miércoles"
-            android:textColor="@android:color/black"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:background="#E91E63"
-            android:layout_marginStart="2dp" />
+            <TextView
+                android:layout_width="55dp"
+                android:layout_height="match_parent"
+                android:text="Mar"
+                android:textColor="@android:color/black"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:background="#E91E63"
+                android:layout_marginStart="2dp" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Jueves"
-            android:textColor="@android:color/black"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:background="#E91E63"
-            android:layout_marginStart="2dp" />
+            <TextView
+                android:layout_width="55dp"
+                android:layout_height="match_parent"
+                android:text="Mié"
+                android:textColor="@android:color/black"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:background="#E91E63"
+                android:layout_marginStart="2dp" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Viernes"
-            android:textColor="@android:color/black"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:background="#E91E63"
-            android:layout_marginStart="2dp" />
+            <TextView
+                android:layout_width="55dp"
+                android:layout_height="match_parent"
+                android:text="Jue"
+                android:textColor="@android:color/black"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:background="#E91E63"
+                android:layout_marginStart="2dp" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Sábado"
-            android:textColor="@android:color/black"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:background="#E91E63"
-            android:layout_marginStart="2dp" />
+            <TextView
+                android:layout_width="55dp"
+                android:layout_height="match_parent"
+                android:text="Vie"
+                android:textColor="@android:color/black"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:background="#E91E63"
+                android:layout_marginStart="2dp" />
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="55dp"
+                android:layout_height="match_parent"
+                android:text="Sáb"
+                android:textColor="@android:color/black"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:background="#E91E63"
+                android:layout_marginStart="2dp" />
 
-    <!-- Contenido del calendario -->
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- Contenido del calendario con doble scroll -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:fillViewport="false">
 
-        <LinearLayout
-            android:id="@+id/calendarContainer"
+        <HorizontalScrollView
+            android:id="@+id/contentScrollView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/calendarContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+        </HorizontalScrollView>
 
     </ScrollView>
 

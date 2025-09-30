@@ -31,6 +31,13 @@ class AgendaActivity : AppCompatActivity() {
         initViews()
         setupClickListeners()
         cargarDatosAgenda()
+        // Sincronizar scroll horizontal entre header y contenido
+        val headerScroll = findViewById<HorizontalScrollView>(R.id.headerScrollView)
+        val contentScroll = findViewById<HorizontalScrollView>(R.id.contentScrollView)
+
+        contentScroll.setOnScrollChangeListener { _, scrollX, _, _, _ ->
+            headerScroll.scrollTo(scrollX, 0)
+        }
     }
 
     private fun initViews() {
@@ -146,16 +153,14 @@ class AgendaActivity : AppCompatActivity() {
     private fun crearTimeSlot(dia: String, horaInicio: String): FrameLayout {
         val horaFin = String.format("%02d:00:00", horaInicio.substring(0, 2).toInt() + 1)
 
-        // Buscar el horario correspondiente
         val horario = horariosMap[dia]?.find {
             it.hora_inicio == horaInicio && it.hora_fin == horaFin
         }
 
         val slot = FrameLayout(this).apply {
             layoutParams = LinearLayout.LayoutParams(
-                0,
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                1f
+                resources.getDimensionPixelSize(R.dimen.day_column_width), // Usar el nuevo dimen
+                LinearLayout.LayoutParams.MATCH_PARENT
             ).apply {
                 setMargins(2, 2, 2, 2)
             }

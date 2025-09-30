@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <resources>
-    <dimen name="time_slot_height">70dp</dimen>
-    <dimen name="time_column_width">60dp</dimen>
-    <dimen name="indicator_size">16dp</dimen>
+    <dimen name="time_slot_height">50dp</dimen>  <!-- Reducir de 70dp a 50dp -->
+    <dimen name="time_column_width">50dp</dimen>  <!-- Reducir de 60dp a 50dp -->
+    <dimen name="indicator_size">12dp</dimen>  <!-- Reducir de 16dp a 12dp -->
+    <dimen name="day_column_width">55dp</dimen>  <!-- Nuevo: ancho de cada columna de día -->
 </resources>
