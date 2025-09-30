@@ -17,8 +17,8 @@
 
         <ImageView
             android:id="@+id/btnBack"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/ic_arrow_back"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:padding="4dp" />
@@ -35,21 +35,21 @@
 
         <ImageView
             android:id="@+id/btnConfig"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/ic_settings"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:padding="4dp" />
 
     </LinearLayout>
 
-    <!-- Indicador de semana -->
+    <!-- Indicador de semana
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="20dp"
         android:layout_gravity="center"
         android:src="@drawable/ic_expand_more"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="8dp" />-->
 
     <!-- Header de días con scroll horizontal -->
     <HorizontalScrollView
