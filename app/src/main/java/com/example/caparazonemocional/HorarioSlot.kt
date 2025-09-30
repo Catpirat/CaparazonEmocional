@@ -4,7 +4,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class HorarioSlot(
-    val id: Int? = null,
+    val id_horario: Int? = null,
     val dia: String,
     val hora_inicio: String,
     val hora_fin: String,

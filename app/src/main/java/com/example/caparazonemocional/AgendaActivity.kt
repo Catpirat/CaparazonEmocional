@@ -202,7 +202,7 @@ class AgendaActivity : AppCompatActivity() {
     private fun crearIndicadorOcupacion(horario: HorarioSlot): View {
         val indicador = View(this).apply {
             layoutParams = FrameLayout.LayoutParams(
-                resources.getDimensionPixelSize(R.dimen.indicator_size), // Define en dimens.xml
+                resources.getDimensionPixelSize(R.dimen.indicator_size),
                 resources.getDimensionPixelSize(R.dimen.indicator_size)
             ).apply {
                 gravity = android.view.Gravity.TOP or android.view.Gravity.END
@@ -210,8 +210,8 @@ class AgendaActivity : AppCompatActivity() {
             }
         }
 
-        // Verificar si está ocupado (por ahora simulamos que algunos están libres)
-        val estaOcupado = citasMap.containsKey(horario.id) // Cambiar lógica según tus datos
+        // Cambiar horario.id por horario.id_horario
+        val estaOcupado = citasMap.containsKey(horario.id_horario)
 
         if (estaOcupado) {
             indicador.background = ContextCompat.getDrawable(this, R.drawable.indicator_ocupado)
@@ -315,12 +315,14 @@ class AgendaActivity : AppCompatActivity() {
     ) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                SupabaseInstance.client.from("horario").update({
-                    set("estado", nuevoEstado)
-                    set("virtual", nuevoVirtual)
-                }) {
+                SupabaseInstance.client.from("horario").update(
+                    mapOf(
+                        "estado" to nuevoEstado,
+                        "virtual" to nuevoVirtual
+                    )
+                ) {
                     filter {
-                        eq("id", horario.id!!)
+                        eq("id_horario", horario.id_horario!!)  // Cambiar "id" por "id_horario"
                     }
                 }
 
