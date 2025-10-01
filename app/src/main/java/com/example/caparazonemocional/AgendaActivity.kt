@@ -40,6 +40,12 @@ class AgendaActivity : AppCompatActivity() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        // Recargar datos cuando vuelvas de CitaInfoActivity (por si se canceló una cita)
+        cargarDatosAgenda()
+    }
+
     private fun initViews() {
         calendarContainer = findViewById(R.id.calendarContainer)
     }
@@ -68,16 +74,23 @@ class AgendaActivity : AppCompatActivity() {
     private fun cargarDatosAgenda() {
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                // Cargar horarios
+                // Cargar horarios - ASEGÚRATE DE INCLUIR TODOS LOS CAMPOS
                 val horarios = SupabaseInstance.client.from("horario")
-                    .select(Columns.list("id_horario", "dia", "hora_inicio", "hora_fin", "estado", "virtual"))
+                    .select() // Cambiar a select() sin parámetros para traer todo
                     .decodeList<HorarioSlot>()
 
-                // Cargar citas (simulado por ahora, después implementaremos la tabla real)
-                // val citas = SupabaseInstance.client.from("cita").select().decodeList<CitaReservada>()
+                // Cargar citas confirmadas
+                val citas = SupabaseInstance.client.from("cita")
+                    .select() {
+                        filter {
+                            eq("estado", true)
+                        }
+                    }
+                    .decodeList<CitaReservada>()
 
                 withContext(Dispatchers.Main) {
                     organizarHorarios(horarios)
+                    organizarCitas(citas)
                     construirCalendario()
                 }
 
@@ -88,6 +101,16 @@ class AgendaActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun organizarCitas(citas: List<CitaReservada>) {
+        citasMap.clear()
+        Log.d("AgendaActivity", "Total citas cargadas: ${citas.size}")
+        citas.forEach { cita ->
+            Log.d("AgendaActivity", "Cita ID: ${cita.id_cita}, Horario ID: ${cita.id_horario}, Estado: ${cita.estado}")
+            citasMap[cita.id_horario] = cita
+        }
+        Log.d("AgendaActivity", "CitasMap final: ${citasMap.keys}")
     }
 
     private fun organizarHorarios(horarios: List<HorarioSlot>) {
@@ -159,7 +182,7 @@ class AgendaActivity : AppCompatActivity() {
 
         val slot = FrameLayout(this).apply {
             layoutParams = LinearLayout.LayoutParams(
-                resources.getDimensionPixelSize(R.dimen.day_column_width), // Usar el nuevo dimen
+                resources.getDimensionPixelSize(R.dimen.day_column_width),
                 LinearLayout.LayoutParams.MATCH_PARENT
             ).apply {
                 setMargins(2, 2, 2, 2)
@@ -175,16 +198,29 @@ class AgendaActivity : AppCompatActivity() {
             slot.addView(indicador)
         }
 
-        // Click listener para configuración
+        // Click listener - diferenciar entre horario ocupado y disponible
         slot.setOnClickListener {
             if (horario != null) {
-                mostrarDialogConfiguracion(horario)
+                val cita = citasMap[horario.id_horario]
+                if (cita != null) {
+                    // Hay una cita - abrir CitaInfoActivity
+                    abrirInfoCita(cita.id_cita!!)
+                } else {
+                    // No hay cita - mostrar configuración
+                    mostrarDialogConfiguracion(horario)
+                }
             } else {
                 Toast.makeText(this, "Horario no encontrado en la base de datos", Toast.LENGTH_SHORT).show()
             }
         }
 
         return slot
+    }
+
+    private fun abrirInfoCita(citaId: Int) {
+        val intent = Intent(this, CitaInfoActivity::class.java)
+        intent.putExtra("CITA_ID", citaId)
+        startActivity(intent)
     }
 
     private fun configurarAparienciaSlot(slot: FrameLayout, horario: HorarioSlot?) {
@@ -215,8 +251,8 @@ class AgendaActivity : AppCompatActivity() {
             }
         }
 
-        // Cambiar horario.id por horario.id_horario
         val estaOcupado = citasMap.containsKey(horario.id_horario)
+        Log.d("AgendaActivity", "Horario ${horario.id_horario} - Ocupado: $estaOcupado")
 
         if (estaOcupado) {
             indicador.background = ContextCompat.getDrawable(this, R.drawable.indicator_ocupado)
