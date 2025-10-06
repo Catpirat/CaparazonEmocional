@@ -106,34 +106,18 @@
             android:background="@drawable/underline" />
 
         <!-- Sección de notas -->
-        <LinearLayout
+        <Button
+            android:id="@+id/btnNotas"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="24dp"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
-
-            <Button
-                android:id="@+id/btnNotas"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:text="Notas"
-                android:textColor="@android:color/black"
-                android:textSize="14sp"
-                android:background="@drawable/button_notas"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Horario cita:"
-                android:textColor="@android:color/black"
-                android:textSize="14sp"
-                android:layout_marginStart="32dp" />
-
-        </LinearLayout>
+            android:text="Notas"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            android:background="@drawable/button_notas"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp" />
 
         <!-- Líneas para notas -->
         <LinearLayout
@@ -162,12 +146,22 @@
 
         </LinearLayout>
 
+        <!-- Texto "Horario cita:" -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:text="Horario cita:"
+            android:textColor="@android:color/black"
+            android:textSize="14sp" />
+
         <!-- Horario con reloj -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="12dp"
             android:orientation="horizontal"
             android:gravity="center">
 
@@ -188,22 +182,40 @@
 
         </LinearLayout>
 
-        <!-- Botón cancelar -->
-        <Button
-            android:id="@+id/btnCancelarCita"
+        <!-- Botones de acción -->
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="56dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="32dp"
             android:layout_marginBottom="80dp"
-            android:text="CANCELAR CITA"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:background="@drawable/button_cancelar"
-            android:paddingStart="32dp"
-            android:paddingEnd="32dp" />
+            android:orientation="horizontal"
+            android:gravity="center">
 
+            <Button
+                android:id="@+id/btnReprogramarCita"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/button_reprogramar"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:text="REPROGRAMAR"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnCancelarCita"
+                android:layout_width="wrap_content"
+                android:layout_height="56dp"
+                android:text="CANCELAR"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:background="@drawable/button_cancelar"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp" />
+        </LinearLayout>
     </LinearLayout>
-
 </ScrollView>

@@ -11,11 +11,35 @@
     <!-- Cabello -->
     <path
         android:fillColor="#3E2723"
-        android:pathData="M60,25C45,25 35,35 35,45C35,48 36,50 37,52C38,48 42,45 46,45C48,40 52,38 60,38C68,38 72,40 74,45C78,45 82,48 83,52C84,50 85,48 85,45C85,35 75,25 60,25Z"/>
+        android:pathData="M60,25
+            C45,25 35,35 35,45
+            C35,48 36,50 37,52
+            C38,53 42,65 56,45
+            C60,50 65,40 40,45
+            C80,79 86,51 85,48
+            C85,67 85,78 85,43
+            C85,33 75,25 60,25Z" />
+
     <!-- Cara -->
     <path
         android:fillColor="#D4915C"
-        android:pathData="M60,45C48,45 38,55 38,65C38,75 48,82 60,82C72,82 82,75 82,65C82,55 72,45 60,45Z"/>
+        android:pathData="M60,45
+            C48,45 38,55 38,65
+            C38,75 48,82 60,82
+            C72,82 82,75 82,65
+            C82,55 72,45 60,45Z" />
+
+    <!-- Ojo izquierdo -->
+    <path
+        android:fillColor="#000"
+        android:pathData="M52,63
+            a2,2 0 1,0 0.01,0Z" />
+
+    <!-- Ojo derecho -->
+    <path
+        android:fillColor="#000"
+        android:pathData="M68,63
+            a2,2 0 1,0 0.01,0Z" />
     <!-- Cuerpo/blusa -->
     <path
         android:fillColor="#FFFFFF"
