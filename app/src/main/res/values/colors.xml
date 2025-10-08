@@ -7,4 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Colores de ocupacion (REPORTES) -->
+    <color name="ocupacion_alta">#4CAF50</color>
+    <color name="ocupacion_media">#FFC107</color>
+    <color name="ocupacion_baja">#FF9800</color>
+    <color name="ocupacion_ninguna">#C8A2D9</color>
 </resources>

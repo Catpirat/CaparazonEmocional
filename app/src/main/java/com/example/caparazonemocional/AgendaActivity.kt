@@ -61,8 +61,7 @@ class AgendaActivity : AppCompatActivity() {
         }
 
         findViewById<ImageView>(R.id.btnReportes).setOnClickListener {
-            // Navegar a ReportesActivity
-            Toast.makeText(this, "Reportes - Próximamente", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, ReportesActivity::class.java))
         }
 
         findViewById<ImageView>(R.id.btnNotificaciones).setOnClickListener {
