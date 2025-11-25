@@ -13,4 +13,10 @@
     <color name="ocupacion_media">#FFC107</color>
     <color name="ocupacion_baja">#FF9800</color>
     <color name="ocupacion_ninguna">#C8A2D9</color>
+
+    <!-- Color Switch Widget (SETTINGS) -->
+    <color name="fucsia_oscuro">#B2006F</color>
+    <color name="fucsia_claro">#FF4081</color>
+    <color name="gris_oscuro_switch">#757575</color>
+    <color name="gris_claro_switch">#BDBDBD</color>
 </resources>

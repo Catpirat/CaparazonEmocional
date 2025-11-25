@@ -207,7 +207,7 @@ class CitaInfoActivity : AppCompatActivity() {
         val btnConfirmar = dialog.findViewById<Button>(R.id.btnConfirmarReprogramar)
 
         // Configurar spinner de días
-        val dias = listOf("Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado")
+        val dias = listOf("Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado")
         val diaAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, dias)
         diaAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerDia.adapter = diaAdapter

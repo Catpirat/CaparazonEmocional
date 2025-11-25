@@ -55,6 +55,9 @@
         <activity android:name=".CitaInfoActivity" android:exported="false" />
         <activity android:name=".NotasPacienteActivity" android:exported="false" />
         <activity android:name=".ReportesActivity" android:exported="false" />
+        <activity android:name=".NotificacionesActivity" android:exported="false" />
+        <activity android:name=".SettingsActivity" android:exported="false" />
+        <activity android:name=".MisPacientesActivity" android:exported="false" />
 
     </application>
 </manifest>

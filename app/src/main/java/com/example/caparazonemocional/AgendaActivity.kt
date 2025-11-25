@@ -19,7 +19,7 @@ import kotlinx.coroutines.withContext
 class AgendaActivity : AppCompatActivity() {
 
     private lateinit var calendarContainer: LinearLayout
-    private val diasSemana = listOf("Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado")
+    private val diasSemana = listOf("Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado")
     private val horasDelDia = (8..20).map { String.format("%02d:00:00", it) } // 08:00 a 20:00
     private var horariosMap = mutableMapOf<String, MutableList<HorarioSlot>>()
     private var citasMap = mutableMapOf<Int, CitaReservada>() // id_horario -> cita
@@ -64,9 +64,15 @@ class AgendaActivity : AppCompatActivity() {
             startActivity(Intent(this, ReportesActivity::class.java))
         }
 
+        findViewById<ImageView>(R.id.btnPacientes).setOnClickListener {
+            startActivity(Intent(this, MisPacientesActivity::class.java))
+        }
+
         findViewById<ImageView>(R.id.btnNotificaciones).setOnClickListener {
-            // Navegar a NotificacionesActivity
-            Toast.makeText(this, "Notificaciones - Próximamente", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, NotificacionesActivity::class.java))
+        }
+        findViewById<ImageView>(R.id.btnConfig).setOnClickListener {
+            startActivity(Intent(this, SettingsActivity::class.java))
         }
     }
 
