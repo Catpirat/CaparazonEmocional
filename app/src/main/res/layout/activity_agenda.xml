@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -43,13 +44,47 @@
 
     </LinearLayout>
 
-    <!-- Indicador de semana
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_gravity="center"
-        android:src="@drawable/ic_expand_more"
-        android:layout_marginTop="8dp" />-->
+    <!-- Navegación de semanas -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="8dp"
+        android:background="#8E44AD">
+
+        <ImageButton
+            android:id="@+id/btnSemanaAnterior"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_arrow_back"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Semana anterior"
+            android:tint="@android:color/white"
+            tools:ignore="UseAppTint" />
+
+        <TextView
+            android:id="@+id/tvRangoSemana"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="24 Nov - 30 Nov"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:gravity="center" />
+
+        <ImageButton
+            android:id="@+id/btnSemanaSiguiente"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_arrow_back"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Semana siguiente"
+            android:rotation="180"
+            android:tint="@android:color/white"
+            tools:ignore="UseAppTint" />
+    </LinearLayout>
 
     <!-- Header de días con scroll horizontal -->
     <HorizontalScrollView
@@ -61,79 +96,24 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <!-- Columna de horas (vacía en header) -->
             <View
                 android:layout_width="50dp"
-                android:layout_height="match_parent" />
+                android:layout_height="50dp" />
 
-            <!-- Días de la semana -->
-            <TextView
-                android:layout_width="55dp"
-                android:layout_height="match_parent"
-                android:text="Lun"
-                android:textColor="@android:color/black"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:background="#E91E63" />
+            <!-- Container para los días dinámicos -->
+            <LinearLayout
+                android:id="@+id/headerDaysContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="55dp"
-                android:layout_height="match_parent"
-                android:text="Mar"
-                android:textColor="@android:color/black"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:background="#E91E63"
-                android:layout_marginStart="2dp" />
+                <!-- Los días se agregarán dinámicamente aquí desde el código -->
 
-            <TextView
-                android:layout_width="55dp"
-                android:layout_height="match_parent"
-                android:text="Mié"
-                android:textColor="@android:color/black"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:background="#E91E63"
-                android:layout_marginStart="2dp" />
-
-            <TextView
-                android:layout_width="55dp"
-                android:layout_height="match_parent"
-                android:text="Jue"
-                android:textColor="@android:color/black"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:background="#E91E63"
-                android:layout_marginStart="2dp" />
-
-            <TextView
-                android:layout_width="55dp"
-                android:layout_height="match_parent"
-                android:text="Vie"
-                android:textColor="@android:color/black"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:background="#E91E63"
-                android:layout_marginStart="2dp" />
-
-            <TextView
-                android:layout_width="55dp"
-                android:layout_height="match_parent"
-                android:text="Sáb"
-                android:textColor="@android:color/black"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:background="#E91E63"
-                android:layout_marginStart="2dp" />
+            </LinearLayout>
 
         </LinearLayout>
     </HorizontalScrollView>
@@ -161,7 +141,6 @@
 
     </ScrollView>
 
-    <!-- Bottom Navigation -->
     <!-- Bottom Navigation -->
     <LinearLayout
         android:layout_width="match_parent"

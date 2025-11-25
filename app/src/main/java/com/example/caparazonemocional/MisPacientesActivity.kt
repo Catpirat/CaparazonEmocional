@@ -72,7 +72,7 @@ class MisPacientesActivity : AppCompatActivity() {
         }
 
         findViewById<ImageView>(R.id.btnHome).setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, AgendaActivity::class.java))
             finish()
         }
 

@@ -108,4 +108,7 @@ dependencies {
 
     //Serialización
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
+
+    // Librería para soporte de fechas en API < 26
+    implementation("com.jakewharton.threetenabp:threetenabp:1.4.6")
 }
